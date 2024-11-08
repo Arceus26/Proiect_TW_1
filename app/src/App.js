@@ -7,6 +7,7 @@ import Login from './Pages/Login';
 import Choose from './Pages/Choose';
 import Add from './Pages/Add';
 import theme from './Theme';
+import Signup from './Pages/Signup';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
           <Route path="/add" element={<Add />} />
           <Route path="/choose" element={<Choose />} />
         </Routes>
