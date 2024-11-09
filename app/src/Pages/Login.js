@@ -19,19 +19,20 @@ function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setErrors(Validation(values));
-    if(errors.email === "" && errors.password === "") {
-      axios.post('http://localhost:8081/login', values)
-      .then(res => {
-        if(res.data === "Success") {
-          navigate('/');
-        } else {
-          alert("No record existed")
-          }
-      })
-      .catch(err => console.log(err));
+    const validationErrors = Validation(values);
+    setErrors(validationErrors);
+    if (!validationErrors.email && !validationErrors.password) {
+        axios.post('http://localhost:8081/login', values)
+        .then(res => {
+            if (res.data === "Success") {
+                navigate('/');
+            } else {
+                alert("No record existed");
+            }
+        })
+        .catch(err => console.log(err));
     }
-  }
+};
 
   return (
     <div className="page">
@@ -39,11 +40,11 @@ function Login() {
         <h1>Log in</h1>
         <form action="" onSubmit={handleSubmit} className="login-form">
             <label htmlFor="email"><strong>Email</strong></label>
-            <input type="email" onChange={handleInput} name='email' placeholder="Enter email"/>
+            <input type="email" className="input-field" onChange={handleInput} name="email" placeholder="Enter email" />
             {errors.email && <span className='text-danger'>{errors.email}</span>}
 
             <label htmlFor="password"><strong>Password</strong></label>
-            <input type="password" onChange={handleInput} name='password' placeholder="Enter password"/>
+            <input type="password" className="input-field" onChange={handleInput} name="password" placeholder="Enter password" />
             {errors.password && <span className='text-danger'>{errors.password}</span>}
 
           <button type="submit" className="login-button">Log in</button>

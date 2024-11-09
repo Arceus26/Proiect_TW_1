@@ -100,3 +100,17 @@ input[type="password"]:focus {
 .login-link:hover {
   text-decoration: underline;
 }
+
+
+.input-field {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+  transition: border-color 0.3s;
+}
+
+.input-field:focus {
+  border-color: #3f3f4f;
+  outline: none;
+}
